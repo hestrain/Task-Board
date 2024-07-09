@@ -165,7 +165,7 @@ function handleDeleteTask() {
     const taskList = readTasksFromStorage();
   
     taskList.forEach((task) => {
-      if (task.id === taskId) {
+      if (task.tID === taskId) {
         taskList.splice(taskList.indexOf(task), 1);
       }
     });
