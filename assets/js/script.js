@@ -45,7 +45,7 @@ function createTaskCard(task) {
   const cardDeleteBtn = $('<button>')
     .addClass('btn btn-danger delete')
     .text('Delete')
-    .attr('data-task-id', task.tIDd);
+    .attr('data-task-id', task.tID).attr('id', task.tID);
   cardDeleteBtn.on('click', handleDeleteTask);
 
   // ? Sets the card background color based on due date. Only apply the styles if the dueDate exists and the status is not done.
@@ -187,19 +187,25 @@ function handleDrop(event, ui) {
   const taskList = readTasksFromStorage();
 
   // ? Get the project id from the event
-  const taskId = ui.draggable[0].dataset.tID;
+  const taskId = ui.detail.id; //this is whats wrong
+
+
+
+  console.log(taskId);
 
   // ? Get the id of the lane that the card was dropped into
   const newStatus = event.target.id;
 
-  for (let task of taskList) {
+  for ( let task of taskList) {
     // ? Find the project card by the `id` and update the project status.
     if (task.tID === taskId) {
       task.status = newStatus;
+      console.log(`task status: ${task.status}`);
     }
   }
   // ? Save the updated projects array to localStorage (overwritting the previous one) and render the new project data to the screen.
   localStorage.setItem('taskList', JSON.stringify(taskList));
+  
   renderTaskList();
 
 }
