@@ -33,11 +33,11 @@ function generateTaskId() {
 // Todo: create a function to create a task card
 function createTaskCard(task) {
   // TODO: Create a new card element and add the classes `card`, `task-card`, `draggable`, and `my-3`. Also add a `data-task-id` attribute and set it to the task id.
-  console.log("we are creating a card");
+  console.log("we are creating cards");
   
   const taskCard = $('<div>')
     .addClass('card task-card draggable my-3')
-    .attr('data-task-id', task.tIDd);
+    .attr('data-task-id', task.tID);
   const cardHeader = $('<div>').addClass('card-header h4').text(task.tTitle);
   const cardBody = $('<div>').addClass('card-body');
   const cardDescription = $('<p>').addClass('card-text').text(task.tDescription);
@@ -75,7 +75,7 @@ function renderTaskList() {
   const taskList = readTasksFromStorage();
 
   console.log(taskList);
-  console.log("we got to render");
+  console.log("rendering cards");
 
   // ? Empty existing task cards out of the lanes
   const todoList = $("#todo-cards");
@@ -180,6 +180,10 @@ function handleDeleteTask() {
     renderTaskList();
   }
 
+  function dragstartHandler(ev) {
+    ev.dataTransfer.dropEffect = "move";
+  }
+
 
 // Todo: create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {
@@ -187,9 +191,10 @@ function handleDrop(event, ui) {
   const taskList = readTasksFromStorage();
 
   // ? Get the project id from the event
-  const taskId = ui.detail.id; //this is whats wrong
+//   const taskId = ui.dataTransfer.items; //this is whats wrong ***************
 
 
+  const taskId = ui.draggable[0].dataset.taskId;
 
   console.log(taskId);
 
@@ -209,6 +214,7 @@ function handleDrop(event, ui) {
   renderTaskList();
 
 }
+
 
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
 

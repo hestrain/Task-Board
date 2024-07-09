@@ -18,14 +18,17 @@
       <p class="lead">A simple Kanban board for task management</p>
     </header>
     <div class="container">
+      <!-- this is the add task button -->
       <div class="text-center mb-5">
         <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
       </div>
+      <!-- this is the modal form the add task button pulls up -->
       <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="formModalLabel">Add Task</h1>
+              <!-- top right button to close modal -->
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -36,6 +39,7 @@
                     <input autocomplete="off" type="text" class="form-control mb-3" id="taskTitle" />
                   </div>
                   <div class="col-6">
+                    <!-- due date, needs to pull up the little calendar -->
                     <label for="taskDueDate" class="form-label">Task Due Date</label>
                     <input autocomplete="off" type="text" class="form-control mb-3" id="taskDueDate" />
                   </div>
@@ -46,6 +50,7 @@
                     <textarea class="form-control mb-5" id="taskDescription" rows="3"></textarea>
                   </div>
                 </div>
+                <!-- submit button -->
                 <div class="text-center">
                   <button type="submit" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Add
                     Task</button>
@@ -57,8 +62,9 @@
       </div>
     <!-- html from assignment -->
     <div class="row swim-lanes text-center justify-content-between">
+      <!-- the to do column -->
       <div class="col-12 col-lg-4 d-flex">
-        <div id="to-do" class="card border-light mb-3 lane flex-grow-1 ui-droppable">
+        <div id="to-do" class="card border-light mb-3 lane flex-grow-1">
           <div class="card-header bg-white">
             <h2 class="card-title mb-1">To Do</h2>
           </div>
@@ -67,8 +73,9 @@
           </div>
         </div>
       </div>
+      <!-- in progress column -->
       <div class="col-12 col-lg-4 d-flex">
-        <div id="in-progress" class="card border-light mb-3 lane flex-grow-1 ui-droppable">
+        <div id="in-progress" class="card border-light mb-3 lane flex-grow-1">
           <div class="card-header bg-white">
             <h2 class="card-title mb-1">In Progress</h2>
           </div>
@@ -77,8 +84,9 @@
           </div>
         </div>
       </div>
+      <!-- done column -->
       <div class="col-12 col-lg-4 d-flex">
-        <div id="done" class="card border-light mb-3 lane flex-grow-1 ui-droppable">
+        <div id="done" class="card border-light mb-3 lane flex-grow-1">
           <div class="card-header bg-white">
             <h2 class="card-title mb-1">Done</h2>
           </div>
